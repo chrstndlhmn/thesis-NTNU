@@ -8,7 +8,7 @@
 
 %% IDENTIFICATION
 
-\xdef\ntnuthesisdate{2019/07/18}
+\xdef\ntnuthesisdate{2026/03/01}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{ntnuthesis}
  [\ntnuthesisdate\space
@@ -22,9 +22,12 @@
 
 % One or twosided paging
 \newcommand{\paging}{twoside}
-\DeclareOption{oneside}{
-  \renewcommand{\paging}{oneside}
+\DeclareOption{twoside}{
+  \renewcommand{\paging}{twoside}
 }
+% \DeclareOption{oneside}{
+%   \renewcommand{\paging}{oneside}
+% }
 
 % Title Page
 \DeclareOption{titlepage}{
@@ -137,13 +140,13 @@
 
 %% CLASS FILE LOADING
 
-\LoadClass[a4paper,11pt,openright,\paging]{report}
+\LoadClass[b5paper,11pt,openright,\paging]{report}
 
 %% PACKAGE LOADING
 
 \RequirePackage[utf8]{inputenc}             % for special characters in input
 \RequirePackage[T1]{fontenc}                % modern font encoding
-\RequirePackage[charter, cal=cmcal]{mathdesign} % main font with math support
+% \RequirePackage[charter, cal=cmcal]{mathdesign} % main font with math support
 \RequirePackage[scaled=.88]{berasans}       % sans serif font
 \RequirePackage[scaled=.82]{DejaVuSansMono} % monospace font (for code)
 \RequirePackage{listings}                   % code listings
@@ -190,8 +193,9 @@
 
 %% CUSTOMISATION
 
-% Page geometry and spacing (same for even and odd pages)
-\geometry{left=4cm, right=4cm, top=4cm, bottom=4.5cm}
+% Page geometry and spacing (not same for even and odd pages)
+% \geometry{left=2cm, right=2cm, top=2cm, bottom=2.5cm}
+\geometry{inner=2.5cm, outer=2cm, top=2cm, bottom=2.5cm}
 \frenchspacing
 
 % Roman page numbers from the beginning of the document
@@ -246,9 +250,15 @@
 \def\ps@ntnuheadings{%
     \let\@evenfoot\@empty
     \let\@oddfoot\@empty
-    \def\@evenhead{\small\thepage\hfil\textit{\@shortauthor: \@shorttitle}}
+    % \def\@evenhead{\small\thepage\hfil\textit{\@shortauthor: \@shorttitle}}
+    % \def\@evenhead{\small\thepage\hfil\textit{\s@ctionmark}}
+    
+    \def\@evenhead{\small\thepage\hfil}
+    
     \def\@oddhead{\small\textit{\ch@ptermark}\hfil\thepage}
+    
     \def\chaptermark##1{\def\ch@ptermark{\chaptername\ \thechapter: ##1}}
+    \def\sectionmark##1{\def\s@ctionmark{\sectionname\ \thesection: ##1}}
 }
 \pagestyle{ntnuheadings}
 
