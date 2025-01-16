@@ -237,7 +237,7 @@
     \label[paper]{#2}
 }{
     \cleardoublepage
-    \includepdf[pages=-]{\include@papername}
+    \includepdf[pages=-,noautoscale = true,scale=.78]{\include@papername}
 }
 
 % Allow for two versions of title and authors – full and short
